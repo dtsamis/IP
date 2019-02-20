@@ -2,32 +2,30 @@ import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
+
+
+
 public class Task
 {
     private String project;
-    private boolean isExpired;
-    private String assignee;
+    private Status status;
+
     private Date date;
-    private boolean isCompleted;
     private String name;
 
 
 
 
 
-    public static void main(String[] args)
-    {
-        Task t = new Task();
-        System.out.println(t.date);
-    }
+
 
 public Task()
+
 {   date=new Date();
     Scanner sc =new Scanner(System.in);
     System.out.print("Give task a name:");
     name=sc.nextLine();
-    System.out.println("Who is responsible for it?");
-    assignee=sc.nextLine();
+
     System.out.println("Which project does it belong to?");
     project = sc.nextLine();
     //"07/10/96 4:5 PM, PDT"
@@ -39,6 +37,11 @@ public Task()
         {
             date = new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(sc.nextLine());
             success=true;
+            if(date.before(new Date()))
+            {
+                System.out.println("This day belongs to the past. Please enter a valid date");
+                success=false;
+            }
 
 
 
@@ -47,16 +50,18 @@ public Task()
         {
             System.out.println("Please enter the date in the requested format");
 
+
+
         }
 
     }
         while(!success);
-        isCompleted=false;
-        isExpired=false;
-    }
+
+        status =Status.PENDING;
+}
 
 
-    public String getProject()
+    public  String getProject()
     {
         return project;
     }
@@ -66,15 +71,7 @@ public Task()
         this.project = project;
     }
 
-    public String getAssignee()
-    {
-        return assignee;
-    }
 
-    public void setAssignee(String assignee)
-    {
-        this.assignee = assignee;
-    }
 
     public Date getDate()
     {
@@ -88,12 +85,12 @@ public Task()
 
     public boolean isCompleted()
     {
-        return isCompleted;
+        return status==Status.COMPLETED;
     }
 
     public void setCompleted(boolean completed)
     {
-        isCompleted = completed;
+        status=Status.COMPLETED;
     }
 
     public String getName()
@@ -108,7 +105,33 @@ public Task()
 
     public boolean isExpired()
     {
-        return isExpired;
+        return status==Status.EXPIRED;
+    }
+
+    public void setExpired()
+    {
+        status=Status.EXPIRED;
+    }
+
+    public void checkExpiration()
+    {
+        if(date.before(new Date()))
+            setExpired();
+
+    }
+
+
+/*class SortbyDate implements Comparator<Task>
+{
+    // Used for sorting in ascending order of
+    // roll number*/
+    public int compareTo(Task b)
+    {
+            if(getDate().before(b.getDate()))
+                return -1;
+            else if(getDate().after(b.getDate()))
+                return 1;
+            else
+                return 0;
     }
 }
-
