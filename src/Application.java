@@ -140,7 +140,7 @@ public class Application
                     displayOption.display("Please enter a valid option (1 - 5):\n");
             }
         }
-        while (choice<0||choice>5);
+        while (choice<1||choice>5);
 
     }
 
