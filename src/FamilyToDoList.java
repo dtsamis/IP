@@ -7,6 +7,7 @@ import java.util.*;
 public class FamilyToDoList
 {
     HashMap<String,ToDoList> lists;
+    Display displayOption;
 
     /**
      * Constructor for the Family List Directory
@@ -23,7 +24,20 @@ public class FamilyToDoList
      */
     public void addHolder(String holder)
     {
-        lists.put(holder,new ToDoList());
+        lists.put(holder,new ToDoList(holder));
+        displayOption.display(holder +"was added to the family todo list\n" +
+                "Would you like to enter "+holder+"'s list now? (Y/N)");
+        Scanner scanner =new Scanner(System.in);
+        do
+        {
+            String choice = scanner.next().toUpperCase();
+             switch (choice)
+             {
+                 case "Y":
+
+             }
+        }while(true);
+
     }
 
     /**
@@ -40,7 +54,7 @@ public class FamilyToDoList
      */
     public void displayHolders()
     {
-        System.out.println(lists.keySet());
+        displayOption.display(lists.keySet()+"\n");
     }
 
     /**

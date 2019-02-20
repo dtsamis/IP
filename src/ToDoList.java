@@ -1,11 +1,14 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+
+
 public class ToDoList
 {
 
     private String holder;
     private ArrayList<Task> tasks;
+    private String menu;
 
     /**
      * Getter method for the list of the tasks in the to do list
@@ -20,10 +23,20 @@ public class ToDoList
     /**
      * Constructor method that initializes the list of tasks in the to do list
      */
-    public ToDoList()
+    public ToDoList(String holder)
     {
 
         tasks =new ArrayList<>();
+        this.holder=holder;
+         /*Show Task List (by date or project)
+        >> (2) Add New Task
+        >> (3) Edit Task (update, mark as done, remove)
+        >> (4) Save and Quit*/
+        menu="You are in "+holder+"'s todo list. Please select action:\n"
+                +"(1) Show Tasks (Sorted by Date)\n"
+                +"(2) Show tasks for a specific project\n"
+                +"(3) Edit Task\n"
+                +"(4) Save and return to Root Menu\n";
     }
 
     /**
@@ -101,10 +114,16 @@ public class ToDoList
         return grouped;
     }
 
-    /*Show Task List (by date or project)
-        >> (2) Add New Task
-        >> (3) Edit Task (update, mark as done, remove)
-        >> (4) Save and Quit*/
+
+
+
+
+    public void showPersonsMenu(Display displayOption)
+    {
+        displayOption.display (menu);
+    }
+
+
 }
 
 

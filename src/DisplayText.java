@@ -13,6 +13,7 @@ public class DisplayText implements Display
     public void display(Object o)
         {
             System.out.print(o);
+
         }
 
 }
