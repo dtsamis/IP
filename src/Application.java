@@ -1,3 +1,4 @@
+import javax.naming.NameNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -54,6 +55,7 @@ public class Application
     public void addHolder(String holder)
     {
         family.addHolder(holder);
+        displayRootMenu();
 
     }
 
@@ -63,9 +65,16 @@ public class Application
      *               is going to be returned
      * @return the to do list for the specific family member
      */
-    public ToDoList chooseListByHolder(String holder)
+    public ToDoList chooseListByHolder(String holder) throws NameNotFoundException
     {
-        return family.chooseListByHolder(holder);
+        try
+        {
+            return family.chooseListByHolder(holder);
+        }
+        catch (NameNotFoundException n)
+        {
+            throw new NameNotFoundException("Member not found\n");
+        }
 
     }
 
@@ -84,6 +93,7 @@ public class Application
     {
 
         selectAction();
+        displayRootMenu();
     }
 
 
@@ -95,7 +105,7 @@ public class Application
         displayOption.display("(2) Select family member\n");
         displayOption.display("(3) Remove family member\n");
         displayOption.display("(4) Add a new family member\n");
-        displayOption.display("(5) Exit the application\n");
+        displayOption.display("(5) Save and Exit the application\n");
 
     }
 
@@ -113,34 +123,63 @@ public class Application
             {
                 case 1:
                     family.displayHolders();
+                    displayRootMenu();
                     break;
 
                 case 2:
                     displayOption.display("Enter the name of the family member:\n");
-                    selectedUser=chooseListByHolder(scanner.next());
+                    boolean success=false;
+
+                    while(!success)
+                    {
+                        try
+                        {
+                            selectedUser=chooseListByHolder(scanner.next());
+                            success=true;
+
+                        }
+                        catch (NameNotFoundException n)
+                        {
+                            displayOption.display("Member not found. Please try again!");
+                        }
+                    }
+
+
+                    selectedUser.toDoListHandler();
+                    displayRootMenu();
 
                     break;
 
                 case 3:
                     displayOption.display("Enter the name of the family member:\n");
                     family.removeHolder(scanner.next());
+                    displayRootMenu();
                     break;
 
                 case 4:
                     displayOption.display("Enter the name of the new family member\n");
                     family.addHolder(scanner.next());
-
+                    displayRootMenu();
                     break;
 
                 case 5:
                     displayOption.display("Thank you for using our application.\n");
                     System.exit(0);
 
+                case 6:
+                    displayRootMenu();
+                    break;
+
                 default:
                     displayOption.display("Please enter a valid option (1 - 5):\n");
+                    displayOption.display("(1) Display all family members\n");
+                    displayOption.display("(2) Select family member\n");
+                    displayOption.display("(3) Remove family member\n");
+                    displayOption.display("(4) Add a new family member\n");
+                    displayOption.display("(5) Save and Exit the application\n");
             }
         }
-        while (choice<1||choice>5);
+        while (choice!=5);
 
     }
 

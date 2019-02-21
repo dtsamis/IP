@@ -1,3 +1,4 @@
+import javax.naming.NameNotFoundException;
 import java.util.*;
 
 /**
@@ -25,18 +26,29 @@ public class FamilyToDoList
     public void addHolder(String holder)
     {
         lists.put(holder,new ToDoList(holder));
-        displayOption.display(holder +"was added to the family todo list\n" +
+        displayOption.display(holder +" was added to the family todo list\n" +
                 "Would you like to enter "+holder+"'s list now? (Y/N)");
         Scanner scanner =new Scanner(System.in);
+        String choice;
         do
         {
-            String choice = scanner.next().toUpperCase();
+            choice = scanner.next().toUpperCase();
              switch (choice)
              {
                  case "Y":
+                     lists.get(holder).setDisplayOption(displayOption);
+                     lists.get(holder).toDoListHandler();
+                     break;
+
+                 case "N":
+
+                     break;
+
+                 default:
+                     displayOption.display("Please enter Y or N:");
 
              }
-        }while(true);
+        }while(!choice.equals("Y")&&!choice.equals("N"));
 
     }
 
@@ -47,6 +59,7 @@ public class FamilyToDoList
     public void removeHolder(String holder)
     {
         lists.remove(holder);
+        displayOption.display(holder+" was removed from the family todo list\n");
     }
 
     /**
@@ -62,9 +75,17 @@ public class FamilyToDoList
      * @param holder The name of the family member that the to do list belongs to.
      * @return the to do list of the specific family number
      */
-    public ToDoList chooseListByHolder(String holder)
+    public ToDoList chooseListByHolder(String holder) throws NameNotFoundException
     {
-        return lists.get(holder);
+        try
+        {
+            displayOption.display("You are now in " + holder + "'s todo list\n");
+            return lists.get(holder);
+        }
+        catch(NullPointerException n)
+        {
+            throw new NameNotFoundException("Member not found\n");
+        }
     }
 
 
