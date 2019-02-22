@@ -1,4 +1,5 @@
-import javax.naming.NameNotFoundException;
+
+
 import java.util.*;
 
 /**
@@ -7,8 +8,9 @@ import java.util.*;
  */
 public class FamilyToDoList
 {
-    HashMap<String,ToDoList> lists;
+    HashMap<String, ToDoList> lists;
     Display displayOption;
+    String selectedUser;
 
     /**
      * Constructor for the Family List Directory
@@ -16,50 +18,61 @@ public class FamilyToDoList
      */
     public FamilyToDoList()
     {
-        lists=new HashMap<>();
+        lists = new HashMap<>();
+        selectedUser = "nobody";
+
     }
 
     /**
      * Adds a to do list for the given person
+     *
      * @param holder the name of the family member
      */
     public void addHolder(String holder)
     {
-        lists.put(holder,new ToDoList(holder));
-        displayOption.display(holder +" was added to the family todo list\n" +
-                "Would you like to enter "+holder+"'s list now? (Y/N)");
-        Scanner scanner =new Scanner(System.in);
+        lists.put(holder, new ToDoList(holder));
+        displayOption.display(holder + " was added to the family todo list\n" +
+                "Would you like to enter " + holder + "'s list now? (Y/N)");
+        Scanner scanner = new Scanner(System.in);
         String choice;
         do
         {
             choice = scanner.next().toUpperCase();
-             switch (choice)
-             {
-                 case "Y":
-                     lists.get(holder).setDisplayOption(displayOption);
-                     lists.get(holder).toDoListHandler();
-                     break;
+            switch (choice)
+            {
+                case "Y":
+                    lists.get(holder).setDisplayOption(displayOption);
+                    lists.get(holder).toDoListHandler();
+                    break;
 
-                 case "N":
+                case "N":
 
-                     break;
+                    break;
 
-                 default:
-                     displayOption.display("Please enter Y or N:");
+                default:
+                    displayOption.display("Please enter Y or N:");
 
-             }
-        }while(!choice.equals("Y")&&!choice.equals("N"));
+            }
+        } while (!choice.equals("Y") && !choice.equals("N"));
 
     }
 
     /**
      * Removes the to do list for the given person
+     *
      * @param holder the name of the family number
      */
     public void removeHolder(String holder)
     {
-        lists.remove(holder);
-        displayOption.display(holder+" was removed from the family todo list\n");
+        try
+        {
+            lists.remove(holder);
+            displayOption.display(holder + " was removed from the family todo list\n");
+        } catch (NullPointerException e)
+        {
+            displayOption.display("Member not found\n");
+
+        }
     }
 
     /**
@@ -67,28 +80,71 @@ public class FamilyToDoList
      */
     public void displayHolders()
     {
-        displayOption.display(lists.keySet()+"\n");
+        displayOption.display(lists.keySet() + "\n");
     }
 
     /**
      * Selects the to do List for a specific family member
-     * @param holder The name of the family member that the to do list belongs to.
-     * @return the to do list of the specific family number
      */
-    public ToDoList chooseListByHolder(String holder) throws NameNotFoundException
+
+    public void setSelectedUser()
     {
-        try
+        Scanner scanner = new Scanner(System.in);
+        displayOption.display("Please enter member's name:");
+
+        String input = scanner.next();
+        while (!lists.containsKey(input))
         {
-            displayOption.display("You are now in " + holder + "'s todo list\n");
-            return lists.get(holder);
+            displayOption.display("Member not found\n Do you want to try again? (Y/N):");
+            String choice = "";
+
+
+            while (!choice.equals("y") && !choice.equals("n"))
+            {
+                displayOption.display("Please enter Y or N\n");
+                choice = scanner.next().toLowerCase();
+            }
+            if (choice.equals("y"))
+            {
+                setSelectedUser();
+
+                break;
+            } else
+                break;
         }
-        catch(NullPointerException n)
-        {
-            throw new NameNotFoundException("Member not found\n");
-        }
+
     }
-
-
-
-
 }
+  /*  public ToDoList chooseListByHolder(String holder) throws NameNotFoundException
+    {
+        ToDoList holderToDoList =null;
+        boolean success = false;
+
+
+            try
+            {
+
+                holderToDoList = lists.get(holder);
+
+                return  holderToDoList;
+            }
+            catch (NullPointerException n)
+            {
+                throw new NameNotFoundException("Member not found.Please try again!");
+
+            }
+
+
+
+
+    }
+*/
+
+
+
+
+
+
+
+
+

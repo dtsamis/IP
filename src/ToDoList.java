@@ -43,7 +43,7 @@ public class ToDoList
                 +"(3) Add Task\n"
                 +"(4) Edit Task\n"
                 +"(5) Show expired tasks\n"
-                +"(6) Save and return to Root Menu\n";
+                +"(6) Save and return to Root Menu\n\n";
     }
 
     /**
