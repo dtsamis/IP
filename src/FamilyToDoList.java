@@ -1,12 +1,13 @@
 
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * This is a class that describes the whole set of the individual
  * to do lists that belong to the members of the family
  */
-public class FamilyToDoList
+public class FamilyToDoList implements Serializable
 {
     HashMap<String, ToDoList> lists;
     Display displayOption;
@@ -31,8 +32,8 @@ public class FamilyToDoList
     public void addHolder(String holder)
     {
         lists.put(holder, new ToDoList(holder));
-        displayOption.display(holder + " was added to the family todo list\n" +
-                "Would you like to enter " + holder + "'s list now? (Y/N)");
+        displayOption.display(holder + " was added to the family todo list\n");
+  /*              "Would you like to enter " + holder + "'s list now? (Y/N)");
         Scanner scanner = new Scanner(System.in);
         String choice;
         do
@@ -54,7 +55,7 @@ public class FamilyToDoList
 
             }
         } while (!choice.equals("Y") && !choice.equals("N"));
-
+*/
     }
 
     /**
@@ -96,6 +97,7 @@ public class FamilyToDoList
         while (!lists.containsKey(input))
         {
             displayOption.display("Member not found\n Do you want to try again? (Y/N):");
+
             String choice = "";
 
 
@@ -106,12 +108,18 @@ public class FamilyToDoList
             }
             if (choice.equals("y"))
             {
-                setSelectedUser();
+                displayOption.display("Please enter member's name:");
+                input = scanner.next();
 
-                break;
+                continue;
             } else
                 break;
         }
+        selectedUser=input;
+        return;
+
+
+
 
     }
 }

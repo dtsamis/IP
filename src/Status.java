@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * A task can only have 3 states: Completed,Expired and Pending
  */

@@ -1,5 +1,6 @@
 import javax.naming.NameNotFoundException;
-import java.lang.reflect.Array;
+import java.io.Serializable;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -7,9 +8,9 @@ import java.util.stream.Collectors;
 /**
  * A class that holds a list of tasks and the methods to handle them
  */
-public class ToDoList
+public class ToDoList implements Serializable
 {
-
+    private final int NUMBEROFTASKS=10;
     private Display displayOption;
     private String holder;
     private ArrayList<Task> tasks;
@@ -107,12 +108,13 @@ public class ToDoList
      * Returns a list of all the tasks in the to do list sorted by date.
      * @return the tasks of the to do list sorted by date.
      */
-    public List<Task> returnByDate()
+    public String returnByDate()
     {
-        List<Task> grouped=
+        String grouped=
                 getTasks().stream()
                         .sorted((task1,task2)->task1.compareTo(task2))
-                        .collect(Collectors.toList());
+                        .map(n -> String.valueOf(n))
+                        .collect(Collectors.joining("\n"));
         return grouped;
     }
 
@@ -136,7 +138,7 @@ public class ToDoList
                 +"(2) Show tasks for a specific project\n"
                 +"(3) Edit Task\n"
                 +"(4) Save and return to Root Menu\n";*/
-        int listOptions[] = {1, 2, 3, 4, 5, 6};
+        int listOptions[] = {1, 2, 3, 4, 5, 6,7};
         do
         {
             choice = scanner.nextInt();
@@ -181,20 +183,30 @@ public class ToDoList
 
                             default:
                                 displayOption.display("Please enter Y for removal or N for keeping expired tasks in the list.\n");
+                                
 
                         }
                     }
+                    toDoListHandler();
+                    break;
                 case 6:
 
-                    break;
+                    return;
+
+                case 7:
+                    fillTestData();
+
+
+
 
                 default:
-                    displayOption.display("Please select valid action:\\n\"\n" +
-                            "                +\"(1) Show Tasks (Sorted by Date)\\n\"\n" +
-                            "                +\"(2) Show tasks for a specific project\\n\"\n" +
-                            "                +\"(3) Edit Task\\n\"\n" +
-                            "                +\"(4) Show expired tasks\\n\"\n" +
-                            "                +\"(5) Save and return to Root Menu\\n\";");
+                    displayOption.display("Please select valid action:\n\n"
+                                             +"(1) Show Tasks (Sorted by Date)\n"
+                                             +"(2) Show tasks for a specific project\n"
+                                             +"(3) Add Task\n"
+                                             +"(4) Edit task\n"
+                                             +"(5) Show expired tasks\n"
+                                             +"(6) Save and return to Root menu\n\n");
 
 
             }
@@ -308,6 +320,38 @@ public void editMenu()
     while (!Arrays.asList(options).contains(editChoice));
     return;
 }
+
+
+public void fillTestData()
+{
+    Random rnd =new Random();
+
+    for(int i=0;i<NUMBEROFTASKS;i++)
+    {
+        int year=rnd.nextInt(500)+2010;
+        int month=rnd.nextInt(12)+1;
+        int []day30={4,6,9,11};
+        int []day31={1,3,5,7,8,10,12};
+        int day;
+        if(Arrays.asList(day30).contains(month))
+            day=rnd.nextInt(30)+1;
+        else if(Arrays.asList(day31).contains(month))
+            day=rnd.nextInt(31)+1;
+        else
+            day=rnd.nextInt(28)+1;
+
+        int hour=rnd.nextInt(23)+1;
+        int minute=rnd.nextInt(60+1);
+        Date d=(new GregorianCalendar(year,month,day,hour,minute)).getTime();
+
+        int title=rnd.nextInt(20)+1;
+        int project=rnd.nextInt(5)+1;
+
+        tasks.add(new Task(title,project,d));
+    }
+}
+
+
 
 }
 

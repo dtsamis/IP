@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -6,7 +7,7 @@ import java.text.SimpleDateFormat;
 /**
  * A class that describes a task
  */
-public class Task
+public class Task implements Serializable
 {
     private String project;
     private Status status;
@@ -21,6 +22,17 @@ public class Task
      * Constructor of the Task class
      * When a task is created, all of its attributes must be defined by the user
      */
+
+    public Task(int title, int project, Date date)
+    {
+        this.name = Integer.toString(title);
+        this.project = Integer.toString(project);
+        this.date = date;
+        status = Status.PENDING;
+    }
+
+
+
     public Task()
 
 {   date=new Date();
@@ -259,5 +271,11 @@ public class Task
 
 
 
+    }
+    @Override
+    public String toString()
+    {
+        String s="Name:"+getName()+"\nProject:"+getProject()+"\nTime:"+getDate()+"\nStatus:"+status+"\n\n";
+        return s;
     }
 }

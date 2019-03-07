@@ -1,8 +1,10 @@
+import java.io.Serializable;
+
 /**
  * Offers the ability to display results as text.
  */
 
-public class DisplayText implements Display
+public class DisplayText implements Display, Serializable
 {
 
 

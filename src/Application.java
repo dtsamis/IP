@@ -7,23 +7,21 @@ import java.util.*;
 
 public class Application implements Serializable
 {
-    FamilyToDoList family=new FamilyToDoList();
+    FamilyToDoList family = new FamilyToDoList();
 
 
-
-    String displayMedia ="text";
+    String displayMedia = "text";
     String familyName;
 
     Display displayOption;
 
 
-
-    public void setfamilyName()
+    public void setFamilyName()
     {
         Scanner scanner = new Scanner(System.in);
         displayOption.display("\"--Welcome!--\n");
         displayOption.display("Please enter your family name:");
-        familyName=scanner.next();
+        familyName = scanner.next();
     }
 
 
@@ -35,22 +33,9 @@ public class Application implements Serializable
     }
 
 
-    public static void main(String[] args)throws ClassNotFoundException
-    {
-
-     Application app = new Application();
-     app.selectDisplay();
-
-     app.setfamilyName();
-
-
-     app.show();
-
-
-    }
-
     /**
      * Creates a new to do list for the given holder
+     *
      * @param holder the name of the family member to be added
      */
     public void addHolder(String holder)
@@ -68,9 +53,9 @@ public class Application implements Serializable
      */
 
 
-
     /**
      * Removes the to do list for the given person
+     *
      * @param holder the name of the family number
      */
     public void removeHolder(String holder)
@@ -79,15 +64,15 @@ public class Application implements Serializable
     }
 
 
-    public void show()throws ClassNotFoundException
+    public void show() throws ClassNotFoundException
     {
-
+        retrieveFromFile(familyName);
         selectAction();
         displayRootMenu();
     }
 
 
-        public void displayRootMenu()
+    public void displayRootMenu()
     {
 
         displayOption.display("Please select one of the following options:\n\n");
@@ -99,35 +84,14 @@ public class Application implements Serializable
 
     }
 
+
     public void selectAction() throws ClassNotFoundException
     {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
 
-            try
-            {   setfamilyName();
-                retrieveFromFile(familyName);
-            }
-            catch(Exception e)
-            {
-                displayOption.display("No todolist for this family\nWould you like to try again or create a new todo list for this family? (T/C)\n");
-                String option = scanner.next().toLowerCase();
-                if (option.equals("t"))
-                    selectAction();
-                else if (option.equals("c"))
-                    displayRootMenu();
-                else
-                {
-                    
-                    displayOption.display("Please enter T or C\n");
-                    selectAction();
-                }
-            }
-
-
-
-        displayOption.display("--Welcome to the todoList of the "+familyName+" family\n\n");
+        displayOption.display("--Welcome to the todoList of the " + familyName + " family\n\n");
         displayRootMenu();
 
         do
@@ -144,14 +108,14 @@ public class Application implements Serializable
                 case 2:
                     family.setSelectedUser();
 
-                    try{
+                    try
+                    {
                         family.lists.get(family.selectedUser).toDoListHandler();
-                    }
-                    catch (NullPointerException E)
+                        
+                    } catch (NullPointerException E)
                     {
                         displayOption.display("No member selected!!");
-                    }
-                    finally
+                    } finally
                     {
                         displayRootMenu();
                     }
@@ -172,6 +136,7 @@ public class Application implements Serializable
 
                 case 5:
                     displayOption.display("Thank you for using our application.\n");
+                    saveToFile(familyName);
                     System.exit(0);
 
                 case 6:
@@ -183,8 +148,39 @@ public class Application implements Serializable
                     displayRootMenu();
             }
         }
-        while (choice!=5);
+        while (choice != 5);
 
+    }
+
+    public void loadList()
+    {
+        Scanner scanner = new Scanner(System.in);
+        Boolean success = false;
+        while (!success)
+        {
+            try
+            {
+                retrieveFromFile(familyName);
+                success = true;
+            } catch (Exception e)
+            {
+                displayOption.display("No todolist for this family\nWould you like to try again or create a new todo list for this family? (T/C)\n");
+                String option = scanner.next().toLowerCase();
+                while (!option.equals("t") && !option.equals("c"))
+                {
+                    if (option.equals("t"))
+                        setFamilyName();
+                    else if (option.equals("c"))
+                        return;
+                    else
+                    {
+
+                        displayOption.display("Please enter T or C\n");
+
+                    }
+                }
+            }
+        }
     }
 
     public void saveToFile(String familyName)
@@ -198,15 +194,13 @@ public class Application implements Serializable
 
 
             output.writeObject(family);
-        }
-        catch(FileNotFoundException f)
+        } catch (FileNotFoundException f)
         {
             displayOption.display("File error!\n");
-        }
-
-        catch(IOException e)
+        } catch (IOException e)
         {
-            displayOption.display("Write error\n");
+            e.printStackTrace();
+            //displayOption.display("Write error---------\n");
         }
     }
 
@@ -218,12 +212,29 @@ public class Application implements Serializable
             ObjectInputStream input = new ObjectInputStream(fo);
 
             family = (FamilyToDoList) input.readObject();
-        }
-
-        catch (IOException e)
+        } catch (IOException e)
         {
-            displayOption.display(("Read Error!\n"));
+            File f = new File(familyName);
+            if (f.exists())
+                displayOption.display(("Read Error!\n"));
+
+            else
+                return;
         }
     }
 
+
+    public static void main(String[] args) throws ClassNotFoundException
+    {
+
+        Application app = new Application();
+        app.selectDisplay();
+
+        app.setFamilyName();
+
+
+        app.show();
+
+
+    }
 }
