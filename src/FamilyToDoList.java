@@ -1,12 +1,13 @@
 
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * This is a class that describes the whole set of the individual
  * to do lists that belong to the members of the family
  */
-public class FamilyToDoList
+public class FamilyToDoList implements Serializable
 {
     HashMap<String, ToDoList> lists;
     Display displayOption;
@@ -31,29 +32,7 @@ public class FamilyToDoList
     public void addHolder(String holder)
     {
         lists.put(holder, new ToDoList(holder));
-        displayOption.display(holder + " was added to the family todo list\n" +
-                "Would you like to enter " + holder + "'s list now? (Y/N)");
-        Scanner scanner = new Scanner(System.in);
-        String choice;
-        do
-        {
-            choice = scanner.next().toUpperCase();
-            switch (choice)
-            {
-                case "Y":
-                    lists.get(holder).setDisplayOption(displayOption);
-                    lists.get(holder).toDoListHandler();
-                    break;
-
-                case "N":
-
-                    break;
-
-                default:
-                    displayOption.display("Please enter Y or N:");
-
-            }
-        } while (!choice.equals("Y") && !choice.equals("N"));
+        displayOption.display(holder + " was added to the family todo list\n");
 
     }
 
@@ -93,6 +72,7 @@ public class FamilyToDoList
         displayOption.display("Please enter member's name:");
 
         String input = scanner.next();
+        selectedUser=input;
         while (!lists.containsKey(input))
         {
             displayOption.display("Member not found\n Do you want to try again? (Y/N):");
@@ -104,13 +84,12 @@ public class FamilyToDoList
                 displayOption.display("Please enter Y or N\n");
                 choice = scanner.next().toLowerCase();
             }
-            if (choice.equals("y"))
+            if (choice.equals("n"))
             {
-                setSelectedUser();
-
                 break;
             } else
-                break;
+                input = scanner.next();
+                selectedUser=input;
         }
 
     }

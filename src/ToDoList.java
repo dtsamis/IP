@@ -14,6 +14,7 @@ public class ToDoList
     private String holder;
     private ArrayList<Task> tasks;
     private String menu;
+    private final int NUMBEROFTASKS=10;
 
     /**
      * Getter method for the list of the tasks in the to do list
@@ -43,7 +44,7 @@ public class ToDoList
                 +"(3) Add Task\n"
                 +"(4) Edit Task\n"
                 +"(5) Show expired tasks\n"
-                +"(6) Save and return to Root Menu\n\n";
+                +"(6) Return to Root Menu\n\n";
     }
 
     /**
@@ -88,15 +89,17 @@ public class ToDoList
      *
      */
 
-    public List<Task> filterByProject( )
+    public String filterByProject( )
     {
         displayOption.display("Enter project name:");
         Scanner scanner =new Scanner(System.in);
         String project=scanner.next();
-        List<Task> filtered=
+        String filtered=
                 getTasks().stream()
                         .filter(x->x.getProject().equals(project))
-                        .collect(Collectors.toList());
+                        .sorted((task1,task2)->task1.compareTo(task2))
+                        .map(x->x.toString())
+                        .collect(Collectors.joining("\n"));
         return filtered;
 
 
@@ -107,13 +110,14 @@ public class ToDoList
      * Returns a list of all the tasks in the to do list sorted by date.
      * @return the tasks of the to do list sorted by date.
      */
-    public List<Task> returnByDate()
+    public String returnByDate()
     {
-        List<Task> grouped=
+        String sorted=
                 getTasks().stream()
                         .sorted((task1,task2)->task1.compareTo(task2))
-                        .collect(Collectors.toList());
-        return grouped;
+                        .map(t->t.toString())
+                        .collect(Collectors.joining("\n"));
+        return sorted;
     }
 
 
@@ -128,7 +132,7 @@ public class ToDoList
     public void toDoListHandler()
     {
         displayOption.display(menu);
-        int choice;
+        String choice;
         Scanner scanner = new Scanner(System.in);
 
 
@@ -136,65 +140,78 @@ public class ToDoList
                 +"(2) Show tasks for a specific project\n"
                 +"(3) Edit Task\n"
                 +"(4) Save and return to Root Menu\n";*/
-        int listOptions[] = {1, 2, 3, 4, 5, 6};
+        String listOptions[] = {"1", "2", "3", "4", "5", "6"};
         do
         {
-            choice = scanner.nextInt();
+            choice = scanner.next();
 
-            switch (choice)
-            {
-                case 1:
+            switch (choice) {
+                case "1":
                     displayOption.display(returnByDate());
                     toDoListHandler();
                     break;
 
-                case 2:
+                case "2":
                     displayOption.display(filterByProject());
                     toDoListHandler();
                     break;
 
-                case 3:
+                case "3":
                     insertTask();
                     displayOption.display("Task was added\n");
                     toDoListHandler();
                     break;
 
-                case 4:
+                case "4":
                     editMenu();
                     toDoListHandler();
 
-                case 5:
+                case "5":
                     List<Task> expired = findExpired();
-                    String removed = "";
-                    displayOption.display("Do you want to remove expired projects? (Y/N)\n");
-
-                    while (!removed.equals("Y") && !removed.equals("N"))
+                    if (expired.size() > 0)
                     {
-                        switch (removed)
-                        {
-                            case "Y":
-                                purgeExpired(expired);
-                                break;
+                        String removed = "";
 
-                            case "N":
-                                break;
+                        displayOption.display("Do you want to remove expired projects? (Y/N)\n");
 
-                            default:
-                                displayOption.display("Please enter Y for removal or N for keeping expired tasks in the list.\n");
+                        while (!removed.equalsIgnoreCase("Y") && !removed.equalsIgnoreCase("N")) {
+                            removed = scanner.next().toLowerCase();
+                            switch (removed) {
+                                case "Y":
+                                    purgeExpired(expired);
+                                    break;
 
+                                case "N":
+                                    toDoListHandler();
+                                    break;
+
+                                default:
+                                    displayOption.display("Please enter Y for removal or N for keeping expired tasks in the list.\n");
+
+                            }
                         }
                     }
-                case 6:
+                    else
+                        {
+                        displayOption.display("No expired task found\n");
+                        }
+                    toDoListHandler();
+                case "6":
 
+                    return;
+
+                case "7":
+                    fillTestData();
+                    toDoListHandler();
                     break;
-
                 default:
-                    displayOption.display("Please select valid action:\\n\"\n" +
-                            "                +\"(1) Show Tasks (Sorted by Date)\\n\"\n" +
-                            "                +\"(2) Show tasks for a specific project\\n\"\n" +
-                            "                +\"(3) Edit Task\\n\"\n" +
-                            "                +\"(4) Show expired tasks\\n\"\n" +
-                            "                +\"(5) Save and return to Root Menu\\n\";");
+                    displayOption.display("Please select valid action:\n" +
+                            "(1) Show Tasks (Sorted by Date)\n" +
+                            "(2) Show tasks for a specific project\n" +
+                            "(3) Add Task\n" +
+                            "(4) Edit Task\n" +
+                            "(5) Show expired tasks\n" +
+                            "(6) Return to Root Menu\n\n");
 
 
             }
@@ -204,10 +221,12 @@ public class ToDoList
 
     public List<Task> findExpired()
     {
-                        List<Task> expired = tasks.stream()
-                                .filter(t->t.isExpired())
-                                .collect(Collectors.toList());
-                        return expired;
+        tasks.stream()
+                .forEach(Task::checkExpiration);
+        List<Task> expired = tasks.stream()
+                .filter(t->t.isExpired())
+                .collect(Collectors.toList());
+        return expired;
     }
 
     public void purgeExpired(List<Task> expired)
@@ -309,6 +328,36 @@ public void editMenu()
     return;
 }
 
+
+    public void fillTestData()
+    {
+        Random rnd =new Random();
+
+        for(int i=0;i<NUMBEROFTASKS;i++)
+        {
+            int year=rnd.nextInt(20)+2010;
+            int month=rnd.nextInt(12)+1;
+            int []day30={4,6,9,11};
+            int []day31={1,3,5,7,8,10,12};
+            int day;
+            if(Arrays.asList(day30).contains(month))
+                day=rnd.nextInt(30)+1;
+            else if(Arrays.asList(day31).contains(month))
+                day=rnd.nextInt(31)+1;
+            else
+                day=rnd.nextInt(28)+1;
+
+            int hour=rnd.nextInt(23)+1;
+            int minute=rnd.nextInt(60+1);
+            Date d=(new GregorianCalendar(year,month,day,hour,minute)).getTime();
+
+            int title=rnd.nextInt(20)+1;
+            int project=rnd.nextInt(5)+1;
+            int description=rnd.nextInt();
+
+            tasks.add(new Task(title,project,description,d));
+        }
+    }
 }
 
 

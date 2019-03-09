@@ -102,11 +102,11 @@ public class Application implements Serializable
     public void selectAction() throws ClassNotFoundException
     {
         Scanner scanner = new Scanner(System.in);
-        int choice;
+        String choice;
 
 
             try
-            {   setfamilyName();
+            {
                 retrieveFromFile(familyName);
             }
             catch(Exception e)
@@ -132,16 +132,16 @@ public class Application implements Serializable
 
         do
         {
-            choice = scanner.nextInt();
+            choice = scanner.next();
 
             switch (choice)
             {
-                case 1:
+                case "1":
                     family.displayHolders();
                     displayRootMenu();
                     break;
 
-                case 2:
+                case "2":
                     family.setSelectedUser();
 
                     try{
@@ -158,32 +158,31 @@ public class Application implements Serializable
                     break;
 
 
-                case 3:
+                case "3":
                     displayOption.display("Enter the name of the family member:\n");
                     family.removeHolder(scanner.next());
                     displayRootMenu();
                     break;
 
-                case 4:
+                case "4":
                     displayOption.display("Enter the name of the new family member\n");
                     family.addHolder(scanner.next());
                     displayRootMenu();
                     break;
 
-                case 5:
+                case "5":
                     displayOption.display("Thank you for using our application.\n");
+                    saveToFile(familyName);
                     System.exit(0);
 
-                case 6:
-                    displayRootMenu();
-                    break;
+
 
                 default:
                     displayOption.display("Please enter a valid option (1 - 5):\n");
                     displayRootMenu();
             }
         }
-        while (choice!=5);
+        while (!choice.equals("5"));
 
     }
 
@@ -204,10 +203,11 @@ public class Application implements Serializable
             displayOption.display("File error!\n");
         }
 
-        catch(IOException e)
-        {
-            displayOption.display("Write error\n");
-        }
+      catch(IOException e)
+      {
+
+           displayOption.display("Write error\n");
+      }
     }
 
     public void retrieveFromFile(String familyName) throws ClassNotFoundException

@@ -17,31 +17,54 @@ public class Task
     private String method;
 
 
+
     /**
      * Constructor of the Task class
      * When a task is created, all of its attributes must be defined by the user
      */
     public Task()
 
-{   date=new Date();
-    Scanner sc =new Scanner(System.in);
-    method="text";
+{
+    setName();
+    setMethod("text");
     setDisplayOption(new DisplayText());
-    displayOption.display("Give task a name:");
-    name=sc.nextLine();
-
-    displayOption.display("Which project does it belong to?");
-    project = sc.nextLine();
-
-    displayOption.display("Enter a task description\n");
-    setDescription(new Scanner(System.in).next());
-
+    setProject();
+    setDescription();
     setDate();
-
-    status =Status.PENDING;
+    setStatus(Status.PENDING);
 
 
 }
+
+    public Task(int title, int project, int description,Date date)
+    {
+        this.name = Integer.toString(title);
+        this.project = Integer.toString(project);
+        this.date = date;
+        this.description=Integer.toString(description);
+        status = Status.PENDING;
+        setDisplayOption(new DisplayText());
+        setMethod("text");
+
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public String getMethod()
+    {
+        return method;
+    };
+
 
     public void setDisplayOption(Display displayMethod)
     {
@@ -59,11 +82,14 @@ public class Task
 
     /**
      * Sets the name of the project the task belongs to
-     * @param project the name of the project that the task will be assigned to
+     *
      */
-    public void setProject(String project)
+    public void setProject()
     {
-        this.project = project;
+        Scanner sc =new Scanner(System.in);
+        displayOption.display("Which project does it belong to?");
+        project = sc.nextLine();
+
     }
 
 
@@ -142,9 +168,11 @@ public class Task
      * Sets the name of the task
      * @param name the name that task will take
      */
-    public void setName(String name)
+    public void setName()
     {
-        this.name = name;
+        Scanner sc =new Scanner(System.in);
+        displayOption.display("Give task a name:");
+        name=sc.nextLine();
     }
 
 
@@ -154,11 +182,14 @@ public class Task
     }
 
 
-    public void setDescription(String description)
+    public void setDescription()
     {
 
 
-        this.description = description;
+        Scanner sc =new Scanner(System.in);
+
+        displayOption.display("Enter task description\n");
+        description=sc.nextLine();
     }
 
 
@@ -238,13 +269,13 @@ public class Task
                     break;
 
                 case "D":
-                    displayOption.display("Enter new description");
-                    setDescription(scanner.next());
+
+                    setDescription();
                     break;
 
                 case "P":
-                    displayOption.display("Enter new project name");
-                    setProject(scanner.next());
+
+                    setProject();
                     break;
 
                 case "R":
@@ -259,5 +290,17 @@ public class Task
 
 
 
+    }
+
+    @Override
+    public String toString()
+    {
+        String s="------------------------------------\n"+
+                "|Name:"+name+"\n" +
+                "|Project:" +project+"\n" +
+                "|Due Date:"+date +"\n" +
+                "|Status:"+status+"\n" +
+                "------------------------------------\n";
+        return s;
     }
 }
