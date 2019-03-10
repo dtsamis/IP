@@ -88,6 +88,7 @@ public class FamilyToDoList implements Serializable
             {
                 break;
             } else
+                displayOption.display("Please enter member's name:");
                 input = scanner.next();
                 selectedUser=input;
         }

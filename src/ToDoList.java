@@ -1,4 +1,5 @@
 import javax.naming.NameNotFoundException;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -7,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * A class that holds a list of tasks and the methods to handle them
  */
-public class ToDoList
+public class ToDoList implements Serializable
 {
 
     private Display displayOption;
@@ -170,19 +171,23 @@ public class ToDoList
                     List<Task> expired = findExpired();
                     if (expired.size() > 0)
                     {
+                        for(Task t:expired)
+                            displayOption.display(t+"\n");
+
                         String removed = "";
 
                         displayOption.display("Do you want to remove expired projects? (Y/N)\n");
 
                         while (!removed.equalsIgnoreCase("Y") && !removed.equalsIgnoreCase("N")) {
-                            removed = scanner.next().toLowerCase();
+                            removed = scanner.next().toUpperCase();
                             switch (removed) {
                                 case "Y":
-                                    purgeExpired(expired);
+                                    purgeExpired();
+
                                     break;
 
                                 case "N":
-                                    toDoListHandler();
+
                                     break;
 
                                 default:
@@ -194,6 +199,7 @@ public class ToDoList
                     else
                         {
                         displayOption.display("No expired task found\n");
+
                         }
                     toDoListHandler();
                 case "6":
@@ -229,10 +235,17 @@ public class ToDoList
         return expired;
     }
 
-    public void purgeExpired(List<Task> expired)
+    public void purgeExpired()
     {
-                        for(Task t:expired)
-                            tasks.remove(t);
+
+            Iterator<Task>it =tasks.iterator();
+            while(it.hasNext())
+            {
+                Task t=it.next();
+                if(t.isExpired())
+                    it.remove();
+            }
+
     }
 
 

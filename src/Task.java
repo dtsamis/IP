@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -6,14 +7,14 @@ import java.text.SimpleDateFormat;
 /**
  * A class that describes a task
  */
-public class Task
+public class Task implements Serializable
 {
     private String project;
     private Status status;
     private String description;
     private Date date;
     private String name;
-    private Display displayOption;
+    private transient Display displayOption;
     private String method;
 
 
@@ -224,7 +225,7 @@ public class Task
 
 
     /**
-     * A comaprison method to be used for comparing dates of two tasks
+     * A comparison method to be used for comparing dates of two tasks
      * @param b A task whose date will be compared to the date of the current task
      * @return -1 if date of current task is earlier than the date of the other task
      *         -2 if date of current task is later than the date of the other task

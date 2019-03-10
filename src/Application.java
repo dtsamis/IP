@@ -146,6 +146,7 @@ public class Application implements Serializable
 
                     try{
                         family.lists.get(family.selectedUser).toDoListHandler();
+                        displayRootMenu();
                     }
                     catch (NullPointerException E)
                     {
@@ -206,12 +207,17 @@ public class Application implements Serializable
       catch(IOException e)
       {
 
-           displayOption.display("Write error\n");
+          e.printStackTrace();
+           //displayOption.display("Write error\n");
       }
     }
 
     public void retrieveFromFile(String familyName) throws ClassNotFoundException
     {
+        File f=new File(familyName);
+        if(!f.exists())
+            return;
+
         try
         {
             FileInputStream fo = new FileInputStream(familyName);
@@ -222,7 +228,8 @@ public class Application implements Serializable
 
         catch (IOException e)
         {
-            displayOption.display(("Read Error!\n"));
+            e.printStackTrace();
+            //displayOption.display(("Read Error!\n"));
         }
     }
 
