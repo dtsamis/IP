@@ -1,6 +1,5 @@
 import javax.naming.NameNotFoundException;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -168,39 +167,7 @@ public class ToDoList implements Serializable
                     toDoListHandler();
 
                 case "5":
-                    List<Task> expired = findExpired();
-                    if (expired.size() > 0)
-                    {
-                        for(Task t:expired)
-                            displayOption.display(t+"\n");
-
-                        String removed = "";
-
-                        displayOption.display("Do you want to remove expired projects? (Y/N)\n");
-
-                        while (!removed.equalsIgnoreCase("Y") && !removed.equalsIgnoreCase("N")) {
-                            removed = scanner.next().toUpperCase();
-                            switch (removed) {
-                                case "Y":
-                                    purgeExpired();
-
-                                    break;
-
-                                case "N":
-
-                                    break;
-
-                                default:
-                                    displayOption.display("Please enter Y for removal or N for keeping expired tasks in the list.\n");
-
-                            }
-                        }
-                    }
-                    else
-                        {
-                        displayOption.display("No expired task found\n");
-
-                        }
+                    expired();
                     toDoListHandler();
                 case "6":
 
@@ -225,6 +192,8 @@ public class ToDoList implements Serializable
         } while (!Arrays.asList(listOptions).contains(choice));
     }
 
+
+
     public List<Task> findExpired()
     {
         tasks.stream()
@@ -234,6 +203,8 @@ public class ToDoList implements Serializable
                 .collect(Collectors.toList());
         return expired;
     }
+
+
 
     public void purgeExpired()
     {
@@ -369,6 +340,55 @@ public void editMenu()
             int description=rnd.nextInt();
 
             tasks.add(new Task(title,project,description,d));
+        }
+    }
+
+    public void expired()
+    {
+        Scanner scanner =new Scanner(System.in);
+        List<Task> expired = findExpired();
+        if (expired.size() > 0)
+        {
+            for(Task t:expired)
+                displayOption.display(t+"\n");
+
+            String removed = "";
+
+            displayOption.display("Do you want to remove expired projects? (Y/N)\n");
+
+            while (!removed.equalsIgnoreCase("Y") && !removed.equalsIgnoreCase("N")) {
+                removed = scanner.next().toUpperCase();
+                switch (removed) {
+                    case "Y":
+                        purgeExpired();
+
+                        break;
+
+                    case "N":
+
+                        break;
+
+                    default:
+                        displayOption.display("Please enter Y for removal or N for keeping expired tasks in the list.\n");
+
+                }
+            }
+        }
+        else
+        {
+            displayOption.display("No expired task found\n");
+
+        }
+    }
+
+    public void deleteTask()
+    {
+        Scanner scanner =new Scanner(System.in);
+        String choice ="";
+
+        while(!choice.equalsIgnoreCase("N")&&!choice.equalsIgnoreCase("P"))
+        {
+            
         }
     }
 }
