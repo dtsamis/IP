@@ -10,6 +10,7 @@ import java.util.*;
 public class FamilyToDoList implements Serializable
 {
     HashMap<String, ToDoList> lists;
+    private static final long serialVersionUID=1L;
     Display displayOption;
     String selectedUser;
 
@@ -87,7 +88,8 @@ public class FamilyToDoList implements Serializable
             if (choice.equals("n"))
             {
                 break;
-            } else
+            }
+            else
                 displayOption.display("Please enter member's name:");
                 input = scanner.next();
                 selectedUser=input;
@@ -95,30 +97,7 @@ public class FamilyToDoList implements Serializable
 
     }
 }
-  /*  public ToDoList chooseListByHolder(String holder) throws NameNotFoundException
-    {
-        ToDoList holderToDoList =null;
-        boolean success = false;
 
-
-            try
-            {
-
-                holderToDoList = lists.get(holder);
-
-                return  holderToDoList;
-            }
-            catch (NullPointerException n)
-            {
-                throw new NameNotFoundException("Member not found.Please try again!");
-
-            }
-
-
-
-
-    }
-*/
 
 
 

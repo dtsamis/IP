@@ -1,3 +1,4 @@
+
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.*;
@@ -16,6 +17,7 @@ public class Task implements Serializable
     private String name;
     private transient Display displayOption;
     private String method;
+    private static final long serialVersionUID=1L;
 
 
 
@@ -26,9 +28,9 @@ public class Task implements Serializable
     public Task()
 
 {
+    setDisplayOption(new DisplayText());
     setName();
     setMethod("text");
-    setDisplayOption(new DisplayText());
     setProject();
     setDescription();
     setDate();
@@ -37,14 +39,14 @@ public class Task implements Serializable
 
 }
 
-    public Task(int title, int project, int description,Date date)
+    public Task(int title, int project, String description,Date date)
     {
+        setDisplayOption(new DisplayText());
         this.name = Integer.toString(title);
         this.project = Integer.toString(project);
         this.date = date;
-        this.description=Integer.toString(description);
+        this.description=description;
         status = Status.PENDING;
-        setDisplayOption(new DisplayText());
         setMethod("text");
 
     }
@@ -299,6 +301,7 @@ public class Task implements Serializable
         String s="------------------------------------\n"+
                 "|Name:"+name+"\n" +
                 "|Project:" +project+"\n" +
+                "|Description:" +description+"\n"+
                 "|Due Date:"+date +"\n" +
                 "|Status:"+status+"\n" +
                 "------------------------------------\n";

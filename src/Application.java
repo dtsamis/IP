@@ -8,7 +8,7 @@ import java.util.*;
 public class Application implements Serializable
 {
     FamilyToDoList family=new FamilyToDoList();
-
+    private static final long serialVersionUID=1L;
 
 
     String displayMedia ="text";
@@ -35,7 +35,7 @@ public class Application implements Serializable
     }
 
 
-    public static void main(String[] args)throws ClassNotFoundException
+    public static void main(String[] args)
     {
 
      Application app = new Application();
@@ -44,45 +44,25 @@ public class Application implements Serializable
      app.setfamilyName();
 
 
+
      app.show();
 
 
     }
 
-    /**
-     * Creates a new to do list for the given holder
-     * @param holder the name of the family member to be added
-     */
-    public void addHolder(String holder)
-    {
-        family.addHolder(holder);
-        displayRootMenu();
-
-    }
-
-    /**
-     * Returns the to do list for the specific family member
-     * @param holder the name of the family member whose to do list
-     *               is going to be returned
-     * @return the to do list for the specific family member
-     */
 
 
 
-    /**
-     * Removes the to do list for the given person
-     * @param holder the name of the family number
-     */
-    public void removeHolder(String holder)
-    {
-        family.removeHolder(holder);
-    }
 
 
-    public void show()throws ClassNotFoundException
+
+
+
+
+    public void show()
     {
 
-        selectAction();
+        selectFile();
         displayRootMenu();
     }
 
@@ -99,76 +79,58 @@ public class Application implements Serializable
 
     }
 
-    public void selectAction() throws ClassNotFoundException
+
+
+
+    public void selectAction()
     {
         Scanner scanner = new Scanner(System.in);
         String choice;
 
 
-            try
-            {
-                retrieveFromFile(familyName);
-            }
-            catch(Exception e)
-            {
-                displayOption.display("No todolist for this family\nWould you like to try again or create a new todo list for this family? (T/C)\n");
-                String option = scanner.next().toLowerCase();
-                if (option.equals("t"))
-                    selectAction();
-                else if (option.equals("c"))
-                    displayRootMenu();
-                else
-                {
-                    
-                    displayOption.display("Please enter T or C\n");
-                    selectAction();
-                }
-            }
+        displayOption.display("\n--Welcome to the todoList of the "+familyName+" family--\n");
 
-
-
-        displayOption.display("--Welcome to the todoList of the "+familyName+" family\n\n");
-        displayRootMenu();
 
         do
         {
+            displayRootMenu();
             choice = scanner.next();
 
             switch (choice)
             {
                 case "1":
                     family.displayHolders();
-                    displayRootMenu();
+                    selectAction();
                     break;
 
                 case "2":
                     family.setSelectedUser();
 
+
                     try{
                         family.lists.get(family.selectedUser).toDoListHandler();
+                        selectAction();
 
                     }
                     catch (NullPointerException E)
                     {
                         displayOption.display("No member selected!!");
+
                     }
-                    finally
-                    {
-                        displayRootMenu();
-                    }
+
                     break;
 
 
                 case "3":
                     displayOption.display("Enter the name of the family member:\n");
                     family.removeHolder(scanner.next());
-                    displayRootMenu();
+                    selectAction();
                     break;
 
                 case "4":
                     displayOption.display("Enter the name of the new family member\n");
                     family.addHolder(scanner.next());
-                    displayRootMenu();
+                    selectAction();
                     break;
 
                 case "5":
@@ -180,7 +142,7 @@ public class Application implements Serializable
 
                 default:
                     displayOption.display("Please enter a valid option (1 - 5):\n");
-                    displayRootMenu();
+                    selectAction();
             }
         }
         while (!choice.equals("5"));
@@ -212,7 +174,7 @@ public class Application implements Serializable
       }
     }
 
-    public void retrieveFromFile(String familyName) throws ClassNotFoundException
+    public void retrieveFromFile(String familyName)
     {
         File f=new File(familyName);
         if(!f.exists())
@@ -230,6 +192,35 @@ public class Application implements Serializable
         {
             e.printStackTrace();
             //displayOption.display(("Read Error!\n"));
+        }
+        catch (ClassNotFoundException c)
+        {
+            c.printStackTrace();
+        }
+    }
+
+    public void selectFile()
+    {
+        Scanner scanner = new Scanner(System.in);
+        try
+        {
+            retrieveFromFile(familyName);
+            selectAction();
+        }
+        catch(Exception e)
+        {
+            displayOption.display("No todolist for this family\nWould you like to try again or create a new todo list for this family? (T/C)\n");
+            String option = scanner.next().toLowerCase();
+            if (option.equals("t"))
+                selectFile();
+            else if (option.equals("c"))
+                selectAction();
+            else
+            {
+
+                displayOption.display("Please enter T or C\n");
+                selectFile();
+            }
         }
     }
 

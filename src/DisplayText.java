@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class DisplayText implements Display, Serializable
 {
+    private static final long serialVersionUID=1L;
 
 
     /**

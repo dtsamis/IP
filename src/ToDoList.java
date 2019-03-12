@@ -15,6 +15,7 @@ public class ToDoList implements Serializable
     private ArrayList<Task> tasks;
     private String menu;
     private final int NUMBEROFTASKS=10;
+    private static final long serialVersionUID=1L;
 
 
 
@@ -24,14 +25,11 @@ public class ToDoList implements Serializable
      */
     public ToDoList(String holder)
     {
-        displayOption=new DisplayText();
+        setDisplayOption(new DisplayText());
         tasks =new ArrayList<>();
         this.holder=holder;
-         /*Show Task List (by date or project)
-        >> (2) Add New Task
-        >> (3) Edit Task (update, mark as done, remove)
-        >> (4) Save and Quit*/
-        menu="You are in "+this.holder+"'s todo list. Please select action:\n"
+
+        menu="You are in "+holder+"'s todo list. Please select action:\n"
                 +"(1) Show Tasks (Sorted by Date)\n"
                 +"(2) Show tasks for a specific project\n"
                 +"(3) Add Task\n"
@@ -43,52 +41,16 @@ public class ToDoList implements Serializable
     }
 
 
-    /*public void deleteTask(Task t)
-    {
-        Scanner scanner =new Scanner(System.in);
-        String choice ="";
 
-        while(!choice.equalsIgnoreCase("N")&&!choice.equalsIgnoreCase("P"))
-        {
-            choice=scanner.next().toLowerCase();
-            String taskName;
-
-            switch (choice)
-            {
-
-                case "n":
-
-                    //displayOption.display("Please enter task name:");
-                    // taskName=scanner.nextLine();
-                    removeTaskByName(t.getName());
-                    break;
-
-                case "p":
-                    //displayOption.display("Please enter project to delete:");
-                    //taskName=scanner.nextLine();
-                    removeTaskByProject(t.getProject());
-            }
-        }
-    }*/
 
 
     public void editMenu()
     {
-        Scanner scanner = new Scanner(System.in);
-        Task t;
-        try
-        {
-            t=selectTaskByName();
-        }
-        catch (NameNotFoundException n)
-        {
-            displayOption.display("No task with this name\n");
-            return;
-        }
 
         String editChoice;
         String options[] = {"U", "D", "C", "R"};
-
+        Scanner scanner = new Scanner(System.in);
+        Task t;
         do
         {
             displayOption.display("Please choose one of the following options:\n" +
@@ -100,11 +62,21 @@ public class ToDoList implements Serializable
             editChoice = scanner.next().toUpperCase();
 
 
-  /*      */
 
             switch (editChoice)
             {
                 case "U":
+
+
+                    try
+                    {
+                        t=selectTaskByName();
+                    }
+                    catch (NameNotFoundException n)
+                    {
+                        displayOption.display("No task with this name\n");
+                        return;
+                    }
 
                     t.editTask();
                     displayOption.display("Task was edited\n");
@@ -118,6 +90,15 @@ public class ToDoList implements Serializable
                     break;
 
                 case "C":
+                    try
+                    {
+                        t=selectTaskByName();
+                    }
+                    catch (NameNotFoundException n)
+                    {
+                        displayOption.display("No task with this name\n");
+                        return;
+                    }
                     t.setCompleted();
                     displayOption.display("Task was marked as completed\n");
                     editMenu();
@@ -128,12 +109,7 @@ public class ToDoList implements Serializable
                     break;
 
                 default:
-                    /*displayOption.display("Please enter a valid option\n");
-                    displayOption.display("(U) for Update\n" +
-                            "(D) for Delete\n" +
-                            "(C) for marking as Completed\n" +
-                            "(R) to return to the previous menu\n");
-*/
+
             }
 
 
@@ -221,9 +197,9 @@ public class ToDoList implements Serializable
 
             int title=rnd.nextInt(20)+1;
             int project=rnd.nextInt(5)+1;
-            int description=rnd.nextInt();
 
-            tasks.add(new Task(title,project,description,d));
+
+            tasks.add(new Task(title,project,"None",d));
         }
     }
 
@@ -238,12 +214,16 @@ public class ToDoList implements Serializable
         displayOption.display("Enter project name:");
         Scanner scanner =new Scanner(System.in);
         String project=scanner.next();
-        String filtered=
-                getTasks().stream()
+
+                List<Task>list= getTasks().stream()
                         .filter(x->x.getProject().equals(project))
                         .sorted((task1,task2)->task1.compareTo(task2))
+                        .collect(Collectors.toList());
+        String filtered=list.stream()
                         .map(x->x.toString())
                         .collect(Collectors.joining("\n"));
+        if(list.size()==0)
+            return "No task assigned to this project\n";
         return filtered;
 
 
@@ -257,6 +237,8 @@ public class ToDoList implements Serializable
         List<Task> expired = tasks.stream()
                 .filter(t->t.isExpired())
                 .collect(Collectors.toList());
+        if(expired.size()==0)
+            displayOption.display("No expired tasks found\n");
         return expired;
     }
 
@@ -277,20 +259,26 @@ public class ToDoList implements Serializable
     {
 
 
-        getTasks().add(new Task());
+        tasks.add(new Task());
+        displayOption.display("New task added");
     }
 
     public void purgeExpired()
     {
-
+        int counter=0;
         Iterator<Task>it =tasks.iterator();
         while(it.hasNext())
         {
             Task t=it.next();
             if(t.isExpired())
+            {
                 it.remove();
-        }
+                counter++;
+            }
 
+        }
+        if(counter==0)
+            displayOption.display("No task has been purged\n");
     }
 
 
@@ -315,33 +303,56 @@ public class ToDoList implements Serializable
             }
             if(counts==0)
                 displayOption.display("No task found with that name\n");
+
     }
 
     /**
      * Removes all the tasks related to a specific project
 
      */
-    public void removeTaskByProject()
+    public void removeProject()
     {
         String project;
-        displayOption.display("Enter name of project to delete all tasks assigned to it.");
+        displayOption.display("Enter name of project to delete all tasks assigned to it.\n");
         Scanner scanner =new Scanner(System.in);
         project=scanner.next();
         displayOption.display("Are you sure that you want to delete all tasks assigned to project "+project+"? (Y/N)");
         String answer=scanner.next().toUpperCase();
         while(!answer.equalsIgnoreCase("Y")&&!answer.equalsIgnoreCase("N"))
         {
+            displayOption.display("Please enter a valid option (Y/N)\n");
+            answer=scanner.next().toUpperCase();
+
+        }
+
+        switch (answer)
+        {
+            case "Y":
+                int counts=0;
+
+                Iterator<Task> it = getTasks().iterator();
+                while(it.hasNext())
+                    if(it.next().getProject().equals(project))
+                    {
+                        it.remove();
+                        counts++;
+                    }
+                if(counts==0)
+                    displayOption.display("No tasks assigned to this project\n");
+                else
+                    displayOption.display(counts+" tasks found in that project were deleted\n");
+                break;
+
+            case "N":
+                return;
+
+
+
 
 
         }
-        int counts=0;
 
-        Iterator<Task> it = getTasks().iterator();
-        while(it.hasNext())
-            if(it.next().getProject().equals(project))
-                it.remove();
-            if(counts==0)
-                displayOption.display("No tasks assigned to this project");
+
     }
 
     /**
@@ -369,15 +380,21 @@ public class ToDoList implements Serializable
 
         for(Task t : tasks)
             if(t.getName().equals(name))
+            {
+                displayOption.display("Task "+name+" was selected\n");
                 return t;
+            }
 
         throw new NameNotFoundException();
     }
+
+
 
     public void setDisplayOption(Display displayMethod)
     {
         displayOption = displayMethod;
     }
+
 
 
     public void toDoListHandler()
@@ -387,61 +404,60 @@ public class ToDoList implements Serializable
         Scanner scanner = new Scanner(System.in);
 
 
-       /* "(1) Show Tasks (Sorted by Date)\n"
-                +"(2) Show tasks for a specific project\n"
-                +"(3) Edit Task\n"
-                +"(4) Save and return to Root Menu\n";*/
+
         String listOptions[] = {"1", "2", "3", "4", "5", "6","7","8"};
         do
         {
+
             choice = scanner.next();
+
 
             switch (choice) {
                 case "1":
                     displayOption.display(returnByDate());
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "2":
                     displayOption.display(filterByProject());
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "3":
                     insertTask();
                     displayOption.display("Task was added\n");
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "4":
 
                     editTask();
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "5":
                     removeTaskByName();
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "6":
-                    removeTaskByProject();
+                    removeProject();
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "7":
                     expired();
                     toDoListHandler();
-                    break;
+                    return;
 
                 case "8":
 
-                    break;
+                    return;
 
                 case "9":
                     fillTestData();
                     toDoListHandler();
-                    break;
+                    return;
                 default:
                     displayOption.display("Please select valid action:\n"
                             +"(1) Show Tasks (Sorted by Date)\n"
