@@ -2,11 +2,84 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4165efa3-811d-441e-a8be-fe67b3c42193" name="Default Changelist" comment="Fixed methods so that they don't depend on the display method">
+      <change afterPath="$PROJECT_DIR$/ToDoList.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Brown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/DisplayText.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IP/DisplayText.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/FamilyToDoList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IP/FamilyToDoList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IP/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Application.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Display.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/DisplayText.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/FamilyToDoList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Status.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ToDoList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/allclasses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/external/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-3.3.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-migrate-3.0.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.structure.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jszip/dist/jszip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/member-search-index.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/package-search-index.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IP/Display.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IP/DisplayText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IP/FamilyToDoList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IP/Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IP/Task.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/type-search-index.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DisplayText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DisplayText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FamilyToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FamilyToDoList.java" afterDir="false" />
@@ -47,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/src/ToDoList.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="455">
-              <caret line="453" lean-forward="true" selection-start-line="453" selection-end-line="453" />
+              <caret line="453" selection-start-line="453" selection-end-line="453" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6703#6704#0" expanded="true" />
@@ -73,7 +146,7 @@
         <entry file="file://$PROJECT_DIR$/src/DisplayText.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -155,17 +228,6 @@
             <path>
               <item name="IP" type="b2602c69:ProjectViewProjectNode" />
               <item name="IP" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IP" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IP" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -177,7 +239,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552400794494" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552400940418" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -233,7 +295,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -243,7 +305,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3611491" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3611491" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -292,7 +354,7 @@
     <entry file="file://$PROJECT_DIR$/src/ToDoList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
-          <caret line="453" lean-forward="true" selection-start-line="453" selection-end-line="453" />
+          <caret line="453" selection-start-line="453" selection-end-line="453" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6703#6704#0" expanded="true" />
@@ -331,7 +393,7 @@
     <entry file="file://$PROJECT_DIR$/src/DisplayText.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
