@@ -256,7 +256,7 @@ public class Task implements Serializable
 
         while (!Arrays.asList(choices).contains(editChoice))
         {
-            editChoice=scanner.next();
+            editChoice=scanner.next().toUpperCase();
 
             switch(editChoice)
             {

@@ -146,7 +146,7 @@ public class Application implements Serializable
 
                     try{
                         family.lists.get(family.selectedUser).toDoListHandler();
-                        displayRootMenu();
+
                     }
                     catch (NullPointerException E)
                     {
