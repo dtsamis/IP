@@ -1,5 +1,3 @@
-
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -22,24 +20,20 @@ public class FamilyToDoList implements Serializable
     {
         lists = new HashMap<>();
         selectedUser = "nobody";
-
     }
 
     /**
      * Adds a to do list for the given person
-     *
      * @param holder the name of the family member
      */
     public void addHolder(String holder)
     {
         lists.put(holder, new ToDoList(holder));
         displayOption.display(holder + " was added to the family todo list\n");
-
     }
 
     /**
      * Removes the to do list for the given person
-     *
      * @param holder the name of the family number
      */
     public void removeHolder(String holder)
@@ -71,14 +65,12 @@ public class FamilyToDoList implements Serializable
     {
         Scanner scanner = new Scanner(System.in);
         displayOption.display("Please enter member's name:");
-
         String input = scanner.next();
         selectedUser=input;
         while (!lists.containsKey(input))
         {
             displayOption.display("Member not found\n Do you want to try again? (Y/N):");
             String choice = "";
-
 
             while (!choice.equals("y") && !choice.equals("n"))
             {
@@ -91,10 +83,9 @@ public class FamilyToDoList implements Serializable
             }
             else
                 displayOption.display("Please enter member's name:");
-                input = scanner.next();
-                selectedUser=input;
+            input = scanner.next();
+            selectedUser=input;
         }
-
     }
 }
 

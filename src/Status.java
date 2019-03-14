@@ -3,10 +3,7 @@
  */
 public enum Status
 {
-
         COMPLETED,
         EXPIRED,
         PENDING
-
-
 }

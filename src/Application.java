@@ -1,23 +1,21 @@
-
 import java.io.*;
 import java.util.*;
 
 
-
-
+/**
+ * The main application that holds the whole execution of the program
+ */
 public class Application implements Serializable
 {
-    FamilyToDoList family=new FamilyToDoList();
+    private FamilyToDoList family=new FamilyToDoList();
     private static final long serialVersionUID=1L;
+    private String displayMedia ="text";
+    private String familyName;
+    private Display displayOption;
 
-
-    String displayMedia ="text";
-    String familyName;
-
-    Display displayOption;
-
-
-
+    /**
+     * Sets the name of the family
+     */
     public void setfamilyName()
     {
         Scanner scanner = new Scanner(System.in);
@@ -26,7 +24,9 @@ public class Application implements Serializable
         familyName=scanner.next();
     }
 
-
+    /**
+     * Selects the desired method of display
+     */
     public void selectDisplay()
     {
         if (displayMedia.equals("text"))
@@ -34,62 +34,52 @@ public class Application implements Serializable
         family.displayOption = new DisplayText();
     }
 
-
+    /**
+     * The main method that runs that reads the family tasklists from file
+     * updates them and stores them back to the file
+     * @param args Any required arguments when running from command line
+     */
     public static void main(String[] args)
     {
-
-     Application app = new Application();
-     app.selectDisplay();
-
-     app.setfamilyName();
-
-
-
-     app.show();
-
+        Application app = new Application();
+        app.selectDisplay();
+        app.setfamilyName();
+        app.show();
 
     }
 
-
-
-
-
-
-
-
-
-
+    /**
+     * Selects the appropriate file, loads the data and displays
+     * options menu to the user.
+     *
+     */
     public void show()
     {
-
         selectFile();
         displayRootMenu();
     }
 
-
-        public void displayRootMenu()
+    /**
+     *Displays the Main menu, where user can add, remove a member of the family
+     * as well as selecting the todolist of a specific member and update it.
+     */
+    public void displayRootMenu()
     {
-
         displayOption.display("Please select one of the following options:\n\n");
         displayOption.display("(1) Display all family members\n");
         displayOption.display("(2) Select family member\n");
         displayOption.display("(3) Remove family member\n");
         displayOption.display("(4) Add a new family member\n");
         displayOption.display("(5) Save and Exit the application\n\n");
-
     }
 
-
-
-
+    /**
+     * Implements the main menu and the operations for members of the family
+     */
     public void selectAction()
     {
         Scanner scanner = new Scanner(System.in);
         String choice;
-
-
-        displayOption.display("\n--Welcome to the todoList of the "+familyName+" family--\n");
-
 
         do
         {
@@ -105,19 +95,17 @@ public class Application implements Serializable
 
                 case "2":
                     family.setSelectedUser();
-
-
                     try{
+
+                        displayOption.display("\n--Welcome to the todoList of the "+familyName+" family--\n");
+                        family.lists.get(family.selectedUser).showResults();
                         family.lists.get(family.selectedUser).toDoListHandler();
                         selectAction();
-
                     }
                     catch (NullPointerException E)
                     {
                         displayOption.display("No member selected!!");
-
                     }
-
                     break;
 
 
@@ -138,42 +126,41 @@ public class Application implements Serializable
                     saveToFile(familyName);
                     System.exit(0);
 
-
-
                 default:
                     displayOption.display("Please enter a valid option (1 - 5):\n");
                     selectAction();
             }
         }
         while (!choice.equals("5"));
-
     }
 
+    /**
+     * Saves the family todolists to a file that has same name with the family
+     * @param familyName the name of the family
+     */
     public void saveToFile(String familyName)
     {
-
         try
         {
             FileOutputStream fo = new FileOutputStream(familyName);
-
             ObjectOutputStream output = new ObjectOutputStream(fo);
-
-
             output.writeObject(family);
         }
         catch(FileNotFoundException f)
         {
             displayOption.display("File error!\n");
         }
-
-      catch(IOException e)
-      {
-
-          e.printStackTrace();
-           //displayOption.display("Write error\n");
-      }
+        catch(IOException e)
+        {
+            displayOption.display("Write error\n");
+        }
     }
 
+    /**
+     * Loads the family todolists from the file that has same name
+     * with the family.
+     * @param familyName the name of the family
+     */
     public void retrieveFromFile(String familyName)
     {
         File f=new File(familyName);
@@ -184,14 +171,11 @@ public class Application implements Serializable
         {
             FileInputStream fo = new FileInputStream(familyName);
             ObjectInputStream input = new ObjectInputStream(fo);
-
             family = (FamilyToDoList) input.readObject();
         }
-
         catch (IOException e)
         {
-            e.printStackTrace();
-            //displayOption.display(("Read Error!\n"));
+            displayOption.display(("Read Error!\n"));
         }
         catch (ClassNotFoundException c)
         {
@@ -199,6 +183,12 @@ public class Application implements Serializable
         }
     }
 
+    /**
+     * Checks if a file exists for a specific family
+     * and loads the data from it.
+     * If not, the user is asked if a new family record
+     * should be created.
+     */
     public void selectFile()
     {
         Scanner scanner = new Scanner(System.in);
@@ -217,11 +207,9 @@ public class Application implements Serializable
                 selectAction();
             else
             {
-
                 displayOption.display("Please enter T or C\n");
                 selectFile();
             }
         }
     }
-
 }
