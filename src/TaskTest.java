@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -8,17 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class TaskTest
 {
     static Task t;
-    @BeforeAll public static void m1()
+    @BeforeEach public  void m1()
     {
         Date date = new Date();
         t = new Task(2, 3, "none", date);
     }
-    @Test
-    void getIndex()
-    {
 
-        assertTrue(t.getIndex()==1);
-    }
 
     @Test
     void setStatus()
@@ -58,54 +54,27 @@ class TaskTest
     }
 
     @Test
-    void getName()
-    {
-    }
-
-    @Test
-    void setName()
-    {
-    }
-
-    @Test
-    void getDescription()
-    {
-    }
-
-    @Test
-    void setDescription()
-    {
-    }
-
-    @Test
     void isExpired()
     {
+        assertFalse(t.isExpired());
+        t.setExpired();
+        assertTrue(t.isExpired());
     }
 
     @Test
     void isOpen()
     {
+        assertTrue(t.isOpen());
     }
 
     @Test
     void setExpired()
     {
+        assertFalse(t.isExpired());
+        t.setExpired();
+        assertTrue(t.isExpired());
     }
 
-    @Test
-    void checkExpiration()
-    {
-    }
-
-    @Test
-    void compareTo()
-    {
-    }
-
-    @Test
-    void editTask()
-    {
     }
 
 
-}
