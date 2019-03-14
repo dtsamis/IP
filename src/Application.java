@@ -63,6 +63,7 @@ public class Application implements Serializable
     {
 
         selectFile();
+
         displayRootMenu();
     }
 
@@ -88,7 +89,7 @@ public class Application implements Serializable
         String choice;
 
 
-        displayOption.display("\n--Welcome to the todoList of the "+familyName+" family--\n");
+
 
 
         do
@@ -108,6 +109,9 @@ public class Application implements Serializable
 
 
                     try{
+
+                        displayOption.display("\n--Welcome to the todoList of the "+familyName+" family--\n");
+                        family.lists.get(family.selectedUser).showResults();
                         family.lists.get(family.selectedUser).toDoListHandler();
                         selectAction();
 
@@ -223,5 +227,7 @@ public class Application implements Serializable
             }
         }
     }
+
+
 
 }

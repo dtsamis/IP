@@ -2,87 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4165efa3-811d-441e-a8be-fe67b3c42193" name="Default Changelist" comment="Fixed methods so that they don't depend on the display method">
-      <change afterPath="$PROJECT_DIR$/ToDoList.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Brown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Application.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Display.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DisplayText.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/FamilyToDoList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Status.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Task.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ToDoList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/allclasses-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/allclasses.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/allpackages-index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/constant-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/deprecated-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/element-list" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/help-doc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-11.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-12.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-13.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index-files/index-9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/external/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-3.3.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-migrate-3.0.1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.structure.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jquery-ui.structure.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jszip/dist/jszip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/member-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/member-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/overview-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/package-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/package-search-index.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/package-summary.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/package-tree.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/Display.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/DisplayText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/FamilyToDoList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IP/Task.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resources/glass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/resources/x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/stylesheet.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/type-search-index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/type-search-index.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DisplayText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DisplayText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FamilyToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FamilyToDoList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToDoList.java" afterDir="false" />
     </list>
@@ -95,13 +18,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Task.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="50" />
+            <state relative-caret-position="-5925">
+              <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1664#1665#0" expanded="true" />
+                <element signature="e#1692#1693#0" expanded="true" />
+                <element signature="e#2598#2599#0" expanded="true" />
+                <element signature="e#2627#2628#0" expanded="true" />
+                <element signature="e#6228#6229#0" expanded="true" />
+                <element signature="e#6273#6274#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,12 +48,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ToDoList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="453" selection-start-line="453" selection-end-line="453" />
+            <state relative-caret-position="157">
+              <caret line="120" column="34" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6675#6676#0" expanded="true" />
                 <element signature="e#6703#6704#0" expanded="true" />
-                <element signature="e#10292#10293#0" expanded="true" />
+                <element signature="e#9142#9143#0" expanded="true" />
+                <element signature="e#9249#9250#0" expanded="true" />
+                <element signature="e#10219#10220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="211" column="24" selection-start-line="211" selection-start-column="12" selection-end-line="211" selection-end-column="24" />
+            <state relative-caret-position="2204">
+              <caret line="116" selection-start-line="116" selection-end-line="116" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DisplayText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="437">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -163,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FamilyToDoList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-440">
+            <state relative-caret-position="-127">
               <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -180,6 +112,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -200,17 +133,19 @@
         <option value="$PROJECT_DIR$/src/Status.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Display.java" />
-        <option value="$PROJECT_DIR$/src/Task.java" />
-        <option value="$PROJECT_DIR$/src/DisplayText.java" />
         <option value="$PROJECT_DIR$/src/FamilyToDoList.java" />
-        <option value="$PROJECT_DIR$/src/ToDoList.java" />
+        <option value="$PROJECT_DIR$/src/DisplayText.java" />
+        <option value="$PROJECT_DIR$/src/TaskTest.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/src/ToDoList.java" />
+        <option value="$PROJECT_DIR$/src/Task.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="823" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -225,25 +160,35 @@
               <item name="IP" type="b2602c69:ProjectViewProjectNode" />
               <item name="IP" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="IP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IP" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552400940418" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552541159489" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -294,8 +239,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -313,7 +259,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.0998632" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.0998632" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -331,19 +277,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Comparator.java" />
-    <entry file="file://$PROJECT_DIR$/IP.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Status.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -351,21 +284,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ToDoList.java">
+    <entry file="file://$PROJECT_DIR$/src/DisplayText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="453" selection-start-line="453" selection-end-line="453" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6703#6704#0" expanded="true" />
-            <element signature="e#10292#10293#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="437">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1007">
+          <caret line="53" column="5" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FamilyToDoList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-440">
+        <state relative-caret-position="-127">
           <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -373,15 +308,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="211" column="24" selection-start-line="211" selection-start-column="12" selection-end-line="211" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/IP.iml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Display.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -390,10 +318,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DisplayText.java">
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="2204">
+          <caret line="116" selection-start-line="116" selection-end-line="116" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ToDoList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="120" column="34" selection-start-line="120" selection-start-column="34" selection-end-line="120" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6675#6676#0" expanded="true" />
+            <element signature="e#6703#6704#0" expanded="true" />
+            <element signature="e#9142#9143#0" expanded="true" />
+            <element signature="e#9249#9250#0" expanded="true" />
+            <element signature="e#10219#10220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5925">
+          <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#1692#1693#0" expanded="true" />
+            <element signature="e#2598#2599#0" expanded="true" />
+            <element signature="e#2627#2628#0" expanded="true" />
+            <element signature="e#6228#6229#0" expanded="true" />
+            <element signature="e#6273#6274#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -437,7 +399,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

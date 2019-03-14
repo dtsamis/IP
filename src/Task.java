@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
  */
 public class Task implements Serializable
 {
+    private static int current=1;
+    private int index;
     private String project;
     private Status status;
     private String description;
@@ -17,6 +19,9 @@ public class Task implements Serializable
     private String name;
     private transient Display displayOption;
     private String method;
+    /**
+     * This is used for keeping the serialization of the object consistent
+     */
     private static final long serialVersionUID=1L;
 
 
@@ -35,10 +40,19 @@ public class Task implements Serializable
     setDescription();
     setDate();
     setStatus(Status.PENDING);
+    index=current;
+    current++;
 
 
 }
 
+    /**
+     * A Task constructor that is used mainly for feeding the random test data
+     * @param title the intended title of the task
+     * @param project the name of the project the task is assigned to
+     * @param description the intended description of the task
+     * @param date the deadline of the task
+     */
     public Task(int title, int project, String description,Date date)
     {
         setDisplayOption(new DisplayText());
@@ -48,30 +62,68 @@ public class Task implements Serializable
         this.description=description;
         status = Status.PENDING;
         setMethod("text");
+        index=current;
+        current++;
 
     }
 
-    public void setStatus(Status status) {
+    /**
+     * Getter method for task index
+     * @return the index of the task
+     */
+    public int getIndex()
+    {
+        return index;
+    }
+
+    /**
+     * Setter method for task status
+     * @param status the intended status of the task
+     * @return true if operation is successful
+     */
+    public boolean setStatus(Status status) {
         this.status = status;
+        return true;
     }
 
-    public void setDate(Date date) {
+    /**
+     * Setter method for task deadline
+     * @param date the intended deadline of the task
+     * @return true if operation is succesful
+     */
+    public boolean setDate(Date date) {
         this.date = date;
+        return true;
     }
 
-    public void setMethod(String method) {
+    /**
+     * Setter method for display option code
+     * @param method the intended display option code for task
+     * @return true if operation is successful
+     */
+    public boolean setMethod(String method) {
         this.method = method;
+        return true;
     }
 
+    /**
+     * Setter method for display option code
+     * @return the display option code of the task
+     */
     public String getMethod()
     {
         return method;
-    };
+    }
 
-
-    public void setDisplayOption(Display displayMethod)
+    /**
+     * Sets the displayMethod of the task
+     * @param displayMethod the required display method
+     * @return true if operation is successful
+     */
+    public boolean setDisplayOption(Display displayMethod)
     {
         displayOption = displayMethod;
+        return true;
     }
 
     /**
@@ -84,17 +136,17 @@ public class Task implements Serializable
     }
 
     /**
-     * Sets the name of the project the task belongs to
-     *
+     * Assigns a project to task
+     * @return true if operation is successful
      */
-    public void setProject()
+
+    public boolean setProject()
     {
         Scanner sc =new Scanner(System.in);
         displayOption.display("Which project does it belong to?");
         project = sc.nextLine();
-
+        return true;
     }
-
 
     /**
      * Getter method for attribute date
@@ -106,10 +158,11 @@ public class Task implements Serializable
     }
 
     /**
-     * Sets the date of completion of the task
-     *
+     * Sets the deadline of the task. It checks if the date is in the past and does not allow
+     * the entry until a valid date is entered
+     * @return true if operation is successful
      */
-    public void setDate()
+    public boolean setDate()
     {
         displayOption.display("Due Date? (Please use \"dd/MM/yyyy hh:mm\" format)");
         Scanner sc =new Scanner(System.in);
@@ -125,20 +178,15 @@ public class Task implements Serializable
                     displayOption.display("This day belongs to the past. Please enter a valid date:");
                     success=false;
                 }
+            }
+            catch (ParseException e)
 
-
-
-
-            } catch (ParseException e)
             {
                 displayOption.display("Please enter the date in the requested format\n");
-
-
-
             }
-
         }
         while(!success);
+        return true;
     }
 
     /**
@@ -169,34 +217,36 @@ public class Task implements Serializable
 
     /**
      * Sets the name of the task
-     * @param name the name that task will take
+     * @return true if operation is successful
      */
-    public void setName()
+    public boolean setName()
     {
         Scanner sc =new Scanner(System.in);
         displayOption.display("Give task a name:");
         name=sc.nextLine();
+        return true;
     }
 
-
+    /**
+     * Getter method for task description
+     * @return the description of the task
+     */
     public String getDescription()
     {
         return description;
     }
 
-
-    public void setDescription()
+    /**
+     * Sets description of the task
+     * @return true if operation is successful
+     */
+    public boolean setDescription()
     {
-
-
         Scanner sc =new Scanner(System.in);
-
         displayOption.display("Enter task description\n");
         description=sc.nextLine();
+        return true;
     }
-
-
-
 
     /**
      * Checks if a task is expired
@@ -208,29 +258,40 @@ public class Task implements Serializable
     }
 
     /**
-     * Marks the task as expired
+     * Checks if a task is pending
+     * @return true if the task is pending
      */
-    public void setExpired()
+    public boolean isOpen()
     {
-        status=Status.EXPIRED;
+        return status==Status.PENDING;
     }
 
     /**
-     * Checks if a task is expired and marks it as expired if so.
+     * Marks a task as expired
+     * @return true if operation is successful
      */
-    public void checkExpiration()
+    public boolean setExpired()
+    {
+        status=Status.EXPIRED;
+        return true; }
+
+    /**
+     * Checks if a task is expired and marks it as expired if so.
+     * @return true if operation is successful
+     */
+    public boolean checkExpiration()
     {
         if(date.before(new Date()))
             setExpired();
+        return true;
 
     }
-
 
     /**
      * A comparison method to be used for comparing dates of two tasks
      * @param b A task whose date will be compared to the date of the current task
      * @return -1 if date of current task is earlier than the date of the other task
-     *         -2 if date of current task is later than the date of the other task
+     *          1 if date of current task is later than the date of the other task
      *          0 if tasks have the same date
      */
     public int compareTo(Task b)
@@ -243,7 +304,11 @@ public class Task implements Serializable
                 return 0;
     }
 
-    public void editTask()
+    /**
+     * Implements the operation of editing a task
+     * @return true if operation is successful
+     */
+    public boolean editTask()
     {
         displayOption.display("What do you want to change?\n" +
         "(N) for Name\n" +
@@ -282,7 +347,7 @@ public class Task implements Serializable
                     break;
 
                 case "R":
-                    return;
+                    return true;
 
                 default:
                     displayOption.display("Please enter a valid option\n");
@@ -292,13 +357,18 @@ public class Task implements Serializable
         }
 
 
-
+    return true;
     }
 
+    /**
+     * Defines how a task is displayed
+     * @return the string swquence that describes a task
+     */
     @Override
     public String toString()
     {
         String s="------------------------------------\n"+
+                "Task ID:"+index+"\n" +
                 "|Name:"+name+"\n" +
                 "|Project:" +project+"\n" +
                 "|Description:" +description+"\n"+
@@ -307,4 +377,6 @@ public class Task implements Serializable
                 "------------------------------------\n";
         return s;
     }
+
+
 }
