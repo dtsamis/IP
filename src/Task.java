@@ -11,6 +11,12 @@ public class Task implements Serializable
     private static int current=1;
     private int index;
     private String project;
+
+    public Status getStatus()
+    {
+        return status;
+    }
+
     private Status status;
     private String description;
     private Date date;
@@ -69,6 +75,8 @@ public class Task implements Serializable
         return index;
     }
 
+
+
     /**
      * Setter method for task status
      * @param status the intended status of the task
@@ -78,14 +86,7 @@ public class Task implements Serializable
         this.status = status;
     }
 
-    /**
-     * Setter method for task deadline
-     * @param date the intended deadline of the task
-     */
-    public void setDate(Date date)
-    {
-        this.date = date;
-    }
+
 
     /**
      * Setter method for display option code
