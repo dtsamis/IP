@@ -10,8 +10,18 @@ public class Application implements Serializable
     private FamilyToDoList family=new FamilyToDoList();
     private static final long serialVersionUID=1L;
     private String displayMedia ="text";
-    private String familyName;
+    private String familyName="";
     private Display displayOption;
+
+    /**
+     * Returns the name of the family to whom the todolist belongs to
+     * @return
+     */
+    public String getFamilyName()
+    {
+        return familyName;
+    }
+
 
     /**
      * Sets the name of the family
