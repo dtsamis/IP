@@ -277,6 +277,7 @@ public class ToDoList implements Serializable
             if(it.next().getIndex()==index)
             {
                 it.remove();
+                displayOption.display("Task with ID "+index+" was removed!");
                 counts++;
             }
         if(counts==0)
@@ -431,7 +432,7 @@ public class ToDoList implements Serializable
 
                 case "5":
                     removeTaskByIndex();
-                    displayOption.display("Task was removed\n");
+                    
                     toDoListHandler();
                     return;
 
@@ -467,5 +468,3 @@ public class ToDoList implements Serializable
         } while (!Arrays.asList(listOptions).contains(choice));
     }
 }
-
-
